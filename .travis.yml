@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run ibrahimBelkhiria/docker-react npm run test -- --coverage
+
+depoly:
+  provider: elasticbeanstalk 
+  region: "us-west-2"
+  app: "the name in the amazon aws"
+  env: "the envirmonet name"
+  bucket_name: "the bucket name in the aws"
+  bucket_path: "the same name app"
+  on:
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY # defined the enviroments in travic ci  
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
